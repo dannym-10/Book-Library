@@ -1,0 +1,36 @@
+//Mixins
+@mixin breakpoint($width-min, $width-max) {
+	@media screen and (min-width: #{$width-min}) and (max-width: #{$width-max}) {
+		@content;
+	}
+}
+
+//Tablet Breakpoint
+@mixin tablet {
+	@media screen and (min-width: #{$mobile-width + 1}) and (max-width: #{$tablet-width}) {
+		@content;
+	}
+}
+
+//Desktop Breakpoint
+@mixin desktop {
+	@media screen and (min-width: #{$tablet-width + 1}) {
+		@content;
+	}
+}
+
+@mixin springContainer {
+    max-width: $mobile-width;
+    padding: 0 $mobile-padding;
+    margin: 0 auto;
+
+    @include tablet {
+        max-width: $tablet-width;
+        padding: 0 $tablet-padding;
+    }
+
+    @include desktop {
+        max-width: $global-width;
+        padding: 0 $desktop-padding;
+    }
+}
